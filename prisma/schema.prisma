@@ -1,0 +1,28 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider             = "prisma-client-py"
+  interface            = "sync"
+  recursive_type_depth = 5
+}
+
+model User {
+  id         String @id
+  email      String @unique
+  forms      Form[]
+  ownedForms Form[] @relation("OwnerForms")
+}
+
+model Form {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String?
+  blocks      Json?
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+  owners User[] @relation("OwnerForms")
+}

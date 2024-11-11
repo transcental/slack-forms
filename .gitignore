@@ -1,0 +1,4 @@
+prisma/migrations
+.venv
+.env
+__pycache__

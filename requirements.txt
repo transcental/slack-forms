@@ -1,0 +1,4 @@
+prisma==0.15.0
+pyright==1.1.388
+python-dotenv==1.0.1
+slack_bolt==1.21.2
